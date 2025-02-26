@@ -1,3 +1,5 @@
+import java.lang.classfile.Label;
+
 import javafx.application.Application; 
 
 import javafx.geometry.Pos; 
@@ -56,6 +58,22 @@ public class PersonalFinancialManager extends Application {
 
         Button myCategoriesButton = new Button("My Categories"); 
   
+
+        // Set uniform width for buttons 
+        double buttonWidth = 200; 
+        
+        addEntryButton.setMinWidth(buttonWidth); 
+
+        setGoalButton.setMinWidth(buttonWidth); 
+
+        transactionHistoryButton.setMinWidth(buttonWidth); 
+
+        financialReportButton.setMinWidth(buttonWidth); 
+
+        myAlertsButton.setMinWidth(buttonWidth); 
+
+        myCategoriesButton.setMinWidth(buttonWidth); 
+	
 
         // Add Entry Button Action 
 
