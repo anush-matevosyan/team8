@@ -61,7 +61,7 @@ public class PersonalFinancialManager extends Application {
 
         // Set uniform width for buttons 
         double buttonWidth = 200; 
-        
+
         addEntryButton.setMinWidth(buttonWidth); 
 
         setGoalButton.setMinWidth(buttonWidth); 
@@ -78,6 +78,14 @@ public class PersonalFinancialManager extends Application {
         // Add Entry Button Action 
 
         addEntryButton.setOnAction(e -> new AddEntryWindow(primaryStage)); 
+
+        // Layout with center alignment 
+
+        VBox layout = new VBox(10); 
+
+        layout.setAlignment(Pos.CENTER); 
+
+        layout.getChildren().addAll(welcomeLabel, spacer1, spacer2, addEntryButton, setGoalButton, transactionHistoryButton, financialReportButton, myAlertsButton, myCategoriesButton); 
          
 
         // Scene setup 
