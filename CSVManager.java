@@ -1,0 +1,79 @@
+import java.io.FileOutputStream; 
+import java.io.IOException; 
+import org.apache.poi.ss.usermodel.Cell; 
+import org.apache.poi.ss.usermodel.Row; 
+import org.apache.poi.xssf.usermodel.XSSFSheet; 
+import org.apache.poi.xssf.usermodel.XSSFWorkbook; 
+
+public class CSVManager{
+	
+	public static void main (String[] args){
+		
+		XSSFWorkbook workbook = new XSSFWorkbook();
+		XSSFSheet sheet1 = workbook.createSheet("income");
+		
+		XSSFSheet sheet2 = workbook.createSheet("spendings");
+		
+		Map<String, Object[]> data = new TreeMap<String, Object[]>(); 
+		
+		data.put("1", new Object[] {"Date", "Category", "Amount", "Notes"});
+		//!!!!!!!call a method to get the data or smt?
+		
+		
+		//writing to the file 
+		Set<String> keyset = data.keySet();
+		
+		int rownum = 0;
+		
+		for(String key : keyset){
+			Row row = sheet.createRow(rownum++);
+			
+			Object[] objArr = data.get(key);
+			
+			int cellnum = 0;
+			
+			for(Object obj : objArr) {
+				Cell cell = row.createCell(cellnum++);
+				//string or money
+				if(obj instanceof String){
+					cell.setCellValue((String)obj);
+				}
+				else if(obj instanceof Double){
+					cell.setCellValue((Double)obj);
+				}
+			}
+		}
+		
+		try{
+			//open an existing workbook or create a new one? 
+/**			get name of the user and last name. 
+	if existing find the file.
+	if not create a new excel file with the title (NameLastname)
+**/			
+			boolean exists = false; 
+			String name;
+			String lastName;	
+			String fileName = name+lastName+".xlsx";
+			FileOutputStream out;
+			if (!exists){
+				out = new FileOutputStream(new File(fileName));
+			}
+			else{
+				//prolly need error handling
+				out = new FileOutputStream(fileName);//idk if this is how you open an existing file
+			}
+			
+			workbook.write(out);
+			
+			out.close();
+			
+			System.out.println(fileName + " written successfully");//do we even use a terminal?
+			
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+}
+				
+		
