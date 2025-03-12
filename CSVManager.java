@@ -51,8 +51,8 @@ public class CSVManager{
 	if not create a new excel file with the title (NameLastname)
 **/			
 			boolean exists = false; 
-			String name;
-			String lastName;	
+			String name = "Tom";
+			String lastName = "Felton";	
 			String fileName = name+lastName+".xlsx";
 			FileOutputStream out;
 			if (!exists){
