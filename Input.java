@@ -1,5 +1,3 @@
-import Date;
-
 public class Input{
 	String category;
 	double amount;
