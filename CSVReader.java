@@ -7,10 +7,18 @@ import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.io.FileNotFoundException;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class CSVReader{
-    public static void main(String[] args){
-        String fileName = "hannahChase.csv";
+    public static void read(String fileName){
+
         File file = new File(fileName);
         List<List<String>> chart = new ArrayList<>();
         Scanner scanner;
