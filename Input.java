@@ -10,7 +10,7 @@ public class Input{
 		category = catIn;
 		amount = amountIn;
 		notes = notesIn;
-		date = dateIn; //figure out how date will be stores
+		date = dateIn; 
 	}
 	
 }
