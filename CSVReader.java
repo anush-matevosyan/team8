@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class CSVReader{
-    public static void main(String[] args){
-        String fileName = "hannahChase.csv";
+    public static void read(String fileName){
+        //String fileName = "hannahChase.csv";
         File file = new File(fileName);
         List<List<String>> chart = new ArrayList<>();
         Scanner scanner;
