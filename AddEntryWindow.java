@@ -89,6 +89,7 @@ public class AddEntryWindow {
             String notes = noteTextArea.getText().isEmpty() ? "No Notes" : noteTextArea.getText(); 
             
             Writing write = new Writing("spendings.csv");
+          
 			      write.addData(selectedDate, amount, selectedCategory, notes);
 			      double spend = CSVReader.summary("spendings.csv");
 			      double goal = write.loadSavingsGoal();
