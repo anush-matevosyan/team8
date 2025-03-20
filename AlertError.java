@@ -8,7 +8,7 @@ public class Alert{//extends Frame
 
    
 
-    public Alert(){
+    public AlertError(){
         //new Alert();
         GridBagConstraints constraints = new GridBagConstraints();
         JFrame frame = new JFrame();
