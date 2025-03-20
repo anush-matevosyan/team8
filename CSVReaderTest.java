@@ -1,5 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 class CSVReaderTest {
@@ -11,5 +11,12 @@ class CSVReaderTest {
 		
 		fail("File not found");
 	}
+
+	@Test
+	void summary(){
+		CSVReader csv = new CSVReader();
+		csv.summary("hannahChase.csv");
+
+		fail("File not found")
 
 }
