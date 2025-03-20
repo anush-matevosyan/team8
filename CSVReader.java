@@ -75,7 +75,6 @@ public class CSVReader{
 			reader.close();
 		}
 		catch(FileNotFoundException e){
-			System.out.println("here");
 			return -1;
 		}
 		return sum;
