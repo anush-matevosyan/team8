@@ -87,6 +87,9 @@ public class AddEntryWindow {
             String amount = amountField.getText().isEmpty() ? "0" : amountField.getText(); 
 
             String notes = noteTextArea.getText().isEmpty() ? "No Notes" : noteTextArea.getText(); 
+            
+            Writing write = new Writing("budget.csv");
+      			write.addData(selectedDate, amount,selectedCategory, notes);
 
             //new EntryConfirmationWindow(selectedDate, selectedCategory, amount, notes, addEntryStage); 
 
