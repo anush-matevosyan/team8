@@ -52,7 +52,7 @@ public class MainMenuWindow extends Application {
 
         Button financialReportButton = new Button("Financial Report"); 
 
-        Button myAlertsButton = new Button("My Alerts"); 
+        //Button myAlertsButton = new Button("My Alerts"); 
 
         Button myCategoriesButton = new Button("My Categories"); 
 
@@ -70,17 +70,21 @@ public class MainMenuWindow extends Application {
 
         financialReportButton.setMinWidth(buttonWidth); 
 
-        myAlertsButton.setMinWidth(buttonWidth); 
+        //myAlertsButton.setMinWidth(buttonWidth); 
 
         myCategoriesButton.setMinWidth(buttonWidth); 
 
   
 
         // Add Entry Button Action 
-
+		
         addEntryButton.setOnAction(e -> new AddEntryWindow(primaryStage)); 
 
-  
+		setGoalButton.setOnAction(e -> new SetSavingsGoal(primaryStage)); 
+
+		transactionHistoryButton.setOnAction(e -> new TransactionHistory(primaryStage)); 
+		
+		financialReportButton.setOnAction(e -> new FinancialReport(primaryStage)); 
 
         // Layout with center alignment 
 
@@ -88,9 +92,8 @@ public class MainMenuWindow extends Application {
 
         layout.setAlignment(Pos.CENTER); 
 
-        layout.getChildren().addAll(welcomeLabel, spacer1, spacer2, addEntryButton, setGoalButton, transactionHistoryButton, 
-
-                                    financialReportButton, myAlertsButton, myCategoriesButton); 
+        layout.getChildren().addAll(welcomeLabel, spacer1, spacer2, addEntryButton, setGoalButton, transactionHistoryButton, financialReportButton, myCategoriesButton);
+		//, myAlertsButton, myCategoriesButton); 
 
          
 

@@ -45,6 +45,10 @@ public class SetSavingsGoal {
             try {
                 double goal = Double.parseDouble(txtGoal.getText());
                 write.saveSavingsGoal(goal);
+				double spend = CSVReader.summary("spendings.csv");
+				if(spend > goal){
+					AlertError error = new AlertError();
+				}
                 savingsStage.close();
             } catch (NumberFormatException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid goal amount!");
