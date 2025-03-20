@@ -35,7 +35,7 @@ public class AddEntryWindow {
         // Date Input 
 
         DatePicker datePicker = new DatePicker(); 
-
+		
   
 
         // Category Selection 
@@ -44,7 +44,7 @@ public class AddEntryWindow {
 
         try { 
 
-            List<String> categories = Files.readAllLines(Paths.get("C:\\Users\\utsav\\Projects\\pROJ1\\src\\pROJ1\\categories.txt")); 
+            List<String> categories = Files.readAllLines(Paths.get("C:\\Anush\\UNB term 3\\2043\\team8\\categories.txt")); 
 
             categoryComboBox.getItems().addAll(categories); 
 
@@ -87,12 +87,15 @@ public class AddEntryWindow {
             String amount = amountField.getText().isEmpty() ? "0" : amountField.getText(); 
 
             String notes = noteTextArea.getText().isEmpty() ? "No Notes" : noteTextArea.getText(); 
-            
-            Writing write = new Writing("budget.csv");
-      			write.addData(selectedDate, amount,selectedCategory, notes);
-
-            //new EntryConfirmationWindow(selectedDate, selectedCategory, amount, notes, addEntryStage); 
-
+			
+			Writing write = new Writing("spendings.csv");
+			write.addData(selectedDate, amount, selectedCategory, notes);
+			double spend = CSVReader.summary("spendings.csv");
+			double goal = write.loadSavingsGoal();
+			if(spend > goal){
+				AlertError error = new AlertError();
+			}
+			//addEntryStage.close();
         }); 
 
   
@@ -110,7 +113,7 @@ public class AddEntryWindow {
         addEntryStage.setScene(scene); 
 
         addEntryStage.showAndWait(); 
-
+		//close once entry is added 
     } 
 
 }

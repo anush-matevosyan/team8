@@ -7,8 +7,10 @@ import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.lang.NumberFormatException;
 
 public class CSVReader{
+	    
     public static void read(String fileName){
         //String fileName = "hannahChase.csv";
         File file = new File(fileName);
@@ -25,6 +27,7 @@ public class CSVReader{
             }
             scanner.close();
         }catch(FileNotFoundException e){
+			//maybe throw an exception and catch in the gui and display message.
             System.out.println("File not found.");
         }
 
@@ -48,4 +51,43 @@ public class CSVReader{
             System.out.println("IO Exception");
         }    
     }
+	
+	public static double summary(String fileName){
+		double sum =0;
+		try{
+			File file = new File(fileName);
+			ArrayList<String> data = new ArrayList<>();
+			Scanner reader = new Scanner(file);
+			reader.nextLine();//get rid of header
+			//reader.useDelimiter(",");
+			while(reader.hasNextLine()){
+				data.add(reader.nextLine());
+			}
+			for(int i=0; i<data.size(); i++){
+				reader = new Scanner(data.get(i));
+				reader.useDelimiter(",");
+				while(reader.hasNext()){
+					String word = reader.next();
+					//System.out.println(word);
+					if(!word.isEmpty()){
+						try{
+							if(word.charAt(0)>='0' && word.charAt(0)<='9'){
+								System.out.println(word);
+								sum += Double.parseDouble(word);
+							}
+						}
+						catch(NumberFormatException e){
+							System.out.println("wrong field");
+						}
+					}
+				}
+			}
+			reader.close();
+		}
+		catch(FileNotFoundException e){
+			System.out.println("here");
+			return -1;
+		}
+		return sum;
+	}
 }
