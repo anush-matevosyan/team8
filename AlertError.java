@@ -4,11 +4,11 @@ import java.awt.GridBagConstraints;
 import java.io.*;
 import javax.swing.*;
 
-public class Alert{//extends Frame
+public class AlertError{
 
    
 
-    public Alert(){
+    public AlertError(){
         //new Alert();
         GridBagConstraints constraints = new GridBagConstraints();
         JFrame frame = new JFrame();
