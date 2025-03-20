@@ -48,4 +48,37 @@ public class CSVReader{
             System.out.println("IO Exception");
         }    
     }
+
+    public static double summary(String fileName){
+		double sum =0;
+		try{
+			File file = new File(fileName);
+			ArrayList<String> data = new ArrayList<>();
+			Scanner reader = new Scanner(file);
+			reader.nextLine();//get rid of header
+			while(reader.hasNextLine()){
+				data.add(reader.nextLine());
+			}
+			for(int i=0; i<data.size(); i++){
+				reader = new Scanner(data.get(i));
+				reader.useDelimiter(",");
+				while(reader.hasNext()){
+					String word = reader.next();
+					//System.out.println(word);
+					if(!word.isEmpty()){
+						if(word.charAt(0)>='0' && word.charAt(0)<='9'){
+							sum += Double.parseDouble(word);
+						}
+					}
+				}
+			}
+			reader.close();
+		}
+		catch(FileNotFoundException e){
+			System.out.println("here");
+			return -1;
+		}
+		return sum;
+	}
+    
 }
