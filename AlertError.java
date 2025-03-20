@@ -4,8 +4,7 @@ import java.awt.GridBagConstraints;
 import java.io.*;
 import javax.swing.*;
 
-public class Alert{//extends Frame
-
+public class AlertError{
    
 
     public AlertError(){
