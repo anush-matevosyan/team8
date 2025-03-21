@@ -5,10 +5,7 @@ import java.io.*;
 import javax.swing.*;
 
 public class AlertError{
-   
-
     public AlertError(){
-        //new Alert();
         GridBagConstraints constraints = new GridBagConstraints();
         JFrame frame = new JFrame();
         frame.setLayout(new GridBagLayout());
