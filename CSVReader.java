@@ -7,6 +7,7 @@ import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
+import java.lang.NumberFormatException;
 
 public class CSVReader{
     public static void read(String fileName){
@@ -56,6 +57,7 @@ public class CSVReader{
 			ArrayList<String> data = new ArrayList<>();
 			Scanner reader = new Scanner(file);
 			reader.nextLine();//get rid of header
+			//reader.useDelimiter(",");
 			while(reader.hasNextLine()){
 				data.add(reader.nextLine());
 			}
@@ -66,8 +68,14 @@ public class CSVReader{
 					String word = reader.next();
 					//System.out.println(word);
 					if(!word.isEmpty()){
-						if(word.charAt(0)>='0' && word.charAt(0)<='9'){
-							sum += Double.parseDouble(word);
+						try{
+							if(word.charAt(0)>='0' && word.charAt(0)<='9'){
+								System.out.println(word);
+								sum += Double.parseDouble(word);
+							}
+						}
+						catch(NumberFormatException e){
+							System.out.println("wrong field");
 						}
 					}
 				}
@@ -75,6 +83,7 @@ public class CSVReader{
 			reader.close();
 		}
 		catch(FileNotFoundException e){
+			System.out.println("here");
 			return -1;
 		}
 		return sum;
