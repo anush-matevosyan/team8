@@ -22,11 +22,9 @@ public class Writing{
 			reader.close();
 		}
 		catch(FileNotFoundException e){
-			System.out.println("here");
 			return -1;
 		}
 		catch(InputMismatchException e){
-			System.out.println("no savings gola");
 			return 0;
 		}
 		return goal;
@@ -60,7 +58,6 @@ public class Writing{
 		}
 		catch(FileNotFoundException e){
 			exists = false;
-			System.out.println("here");
 		}
 		try{
 			FileWriter file;
