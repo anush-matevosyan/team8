@@ -30,12 +30,11 @@ public class TransactionHistory {
 
         transactionStage.setTitle("Transaction History"); 
 
-		String fileName = "spendings.csv";
-		CSVReader.read(fileName);
+	String fileName = "spendings.csv";
+	CSVReader.read(fileName);
 
-		Label history = new Label("Your text file with the transaction history \nhas been created!");
-		//fix color
-
+	Label history = new Label("Your text file with the transaction history \nhas been created!");
+		
         VBox layout = new VBox(10, history); 
 
         layout.setAlignment(Pos.CENTER); 
@@ -45,7 +44,6 @@ public class TransactionHistory {
         transactionStage.setScene(scene); 
 
         transactionStage.showAndWait(); 
-		//close once entry is added 
     } 
 
 }
