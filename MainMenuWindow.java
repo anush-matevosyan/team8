@@ -69,9 +69,7 @@ public class MainMenuWindow extends Application {
         transactionHistoryButton.setMinWidth(buttonWidth); 
 
         financialReportButton.setMinWidth(buttonWidth); 
-
-        myAlertsButton.setMinWidth(buttonWidth); 
-
+      
         myCategoriesButton.setMinWidth(buttonWidth); 
 
   
@@ -80,7 +78,12 @@ public class MainMenuWindow extends Application {
 
         addEntryButton.setOnAction(e -> new AddEntryWindow(primaryStage)); 
 
-  
+        setGoalButton.setOnAction(e -> new SetSavingsGoal(primaryStage)); 
+
+		    transactionHistoryButton.setOnAction(e -> new TransactionHistory(primaryStage)); 
+		
+		    financialReportButton.setOnAction(e -> new FinancialReport(primaryStage)); 
+
 
         // Layout with center alignment 
 
@@ -88,10 +91,7 @@ public class MainMenuWindow extends Application {
 
         layout.setAlignment(Pos.CENTER); 
 
-        layout.getChildren().addAll(welcomeLabel, spacer1, spacer2, addEntryButton, setGoalButton, transactionHistoryButton, 
-
-                                    financialReportButton, myAlertsButton, myCategoriesButton); 
-
+        layout.getChildren().addAll(welcomeLabel, spacer1, spacer2, addEntryButton, setGoalButton, transactionHistoryButton, financialReportButton, myCategoriesButton);
          
 
         // Scene setup 
