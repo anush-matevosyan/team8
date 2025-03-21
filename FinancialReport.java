@@ -44,7 +44,6 @@ public class FinancialReport {
 		Label save = new Label("Your Savings Goal: ");
 		
 		Label spend = new Label("The amount you spend: ");
-		//fix color
 
 		Label saved = new Label("Money saved: ");
 		
@@ -60,7 +59,6 @@ public class FinancialReport {
         financialStage.setScene(scene); 
 
         financialStage.showAndWait(); 
-		//close once entry is added 
     } 
 
 }
