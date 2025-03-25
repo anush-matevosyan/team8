@@ -92,7 +92,8 @@ public class AddEntryWindow {
           
 	    write.addData(selectedDate, amount, selectedCategory, notes);
 	    double spend = CSVReader.summary("spendings.csv");
-	    double goal = write.loadSavingsGoal();
+	    Writing text = new Writing("savingsGoal.txt");
+	    double goal = text.loadSavingsGoal();
             if(spend > goal){
 	    	AlertError error = new AlertError();
 	    }
