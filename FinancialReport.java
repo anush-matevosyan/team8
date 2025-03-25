@@ -18,6 +18,10 @@ import java.nio.file.Paths;
 
 import java.util.List; 
 
+import javafx.scene.chart.PieChart;
+
+import java.util.Map;
+
 import javafx.scene.text.Text;
 
   
@@ -31,30 +35,40 @@ public class FinancialReport {
         financialStage.initModality(Modality.APPLICATION_MODAL); 
 
         financialStage.setTitle("Financial Report"); 
-		Writing write = new Writing("savingsGoal.txt");
-		double sum = CSVReader.summary("spendings.csv");
-		double goal = write.loadSavingsGoal();
-		Text txtSum = new Text();
+	Writing write = new Writing("savingsGoal.txt");
+	double sum = CSVReader.summary("spendings.csv");
+	double goal = write.loadSavingsGoal();
+	Text txtSum = new Text();
+	
+	Text txtGoal = new Text();
 		
-		Text txtGoal = new Text();
+	txtSum.setText(String.valueOf(sum));
 		
-		txtSum.setText(String.valueOf(sum));
+	txtGoal.setText(String.valueOf(goal));
+	Label save = new Label("Your Savings Goal: ");
 		
-		txtGoal.setText(String.valueOf(goal));
-		Label save = new Label("Your Savings Goal: ");
-		
-		Label spend = new Label("The amount you spend: ");
+	Label spend = new Label("The Amount you Spend: ");
+	
 
-		Label saved = new Label("Money saved: ");
+	Label saved = new Label("Money saved: ");
+	
+	Text left = new Text();
 		
-		Text left = new Text();
+
+	PieChart pieChart = new PieChart();
+        Map<String, Double> expenses = CSVReader.getCategoryExpenses("spendings.csv");
 		
-		left.setText(String.valueOf(goal-sum));
-        VBox layout = new VBox(10, save, txtGoal, spend, txtSum, saved, left); 
+
+        for (Map.Entry<String, Double> entry : expenses.entrySet()) {
+            pieChart.getData().add(new PieChart.Data(entry.getKey(), entry.getValue()));
+        }
+	
+	left.setText(String.valueOf(goal-sum));
+        VBox layout = new VBox(pieChart, save, txtGoal, spend, txtSum, saved, left); 
 
         layout.setAlignment(Pos.CENTER); 
 
-        Scene scene = new Scene(layout, 300, 350); 
+        Scene scene = new Scene(layout, 700, 600); 
 
         financialStage.setScene(scene); 
 
