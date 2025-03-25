@@ -57,35 +57,61 @@ public class CSVReader{
 			ArrayList<String> data = new ArrayList<>();
 			Scanner reader = new Scanner(file);
 			reader.nextLine();//get rid of header
-			//reader.useDelimiter(",");
 			while(reader.hasNextLine()){
 				data.add(reader.nextLine());
 			}
 			for(int i=0; i<data.size(); i++){
-				reader = new Scanner(data.get(i));
-				reader.useDelimiter(",");
-				while(reader.hasNext()){
-					String word = reader.next();
-					//System.out.println(word);
-					if(!word.isEmpty()){
-						try{
-							if(word.charAt(0)>='0' && word.charAt(0)<='9'){
-								System.out.println(word);
-								sum += Double.parseDouble(word);
-							}
-						}
-						catch(NumberFormatException e){
-							System.out.println("wrong field");
-						}
-					}
-				}
+				String[] line = data.get(i).split(",");
+				sum += Double.parseDouble(line[1]);
+				System.out.println(sum);
 			}
 			reader.close();
 		}
 		catch(FileNotFoundException e){
+			System.out.println("summary file not found");
 			return -1;
 		}
 		return sum;
+	}
+	
+	public static HashMap<String, Double> getCategoryExpenses(String fileName){
+		double sum =0;
+		HashMap<String, Double> ans;
+		try{
+			File file = new File(fileName);
+			ArrayList<String> data = new ArrayList<>();
+			Scanner reader = new Scanner(file);
+			reader.nextLine();
+			while(reader.hasNextLine()){
+				data.add(reader.nextLine());
+			}
+			ArrayList<String> categories = new ArrayList<String>();
+			ArrayList<Double> amount = new ArrayList<Double>();
+			for(int i=0; i<data.size(); i++){
+				String[] line = data.get(i).split(",");
+				int place = categories.indexOf(line[2]);//contains the category
+				double replace = Double.parseDouble(line[1]);
+				if(place == -1){
+					categories.add(line[2]);
+					amount.add(replace);
+				}
+				else{
+					double old = amount.get(place);
+					amount.add(place, old+replace);
+				}
+
+			}
+			ans = new HashMap<String, Double>();
+			for(int j=0; j<categories.size(); j++){
+				ans.put(categories.get(j), amount.get(j));
+			}
+			reader.close();
+		}
+		catch(FileNotFoundException e){
+			System.out.println("File Not Found");
+			return null;
+		}
+		return ans;
 	}
     
 }
