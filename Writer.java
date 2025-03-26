@@ -47,7 +47,6 @@ public class Writing{
 		boolean exists = true; 
 		try{
 			File file = new File(fileName);
-			ArrayList<String> notes = new ArrayList<>();
 			int rows = 0;
 			Scanner reader = new Scanner(file);
 			while(reader.hasNextLine()){
@@ -63,7 +62,6 @@ public class Writing{
 			FileWriter file;
 			file = new FileWriter(fileName, true);
 			if(!exists){
-				
 				file.append("Date, Amount, Category, Notes\n");
 			}
 		
@@ -72,6 +70,18 @@ public class Writing{
 			file.append(categoryIn + ",");
 			file.append(notesIn + ",\n");
 			
+			file.close();
+		}
+		catch(IOException e){
+			System.out.println(e);
+		}	
+	}
+	public void addCategory(String catIn){
+		try{
+			FileWriter file;
+			file = new FileWriter(fileName, true);
+		
+			file.append(catIn + "\n");
 			file.close();
 		}
 		catch(IOException e){
