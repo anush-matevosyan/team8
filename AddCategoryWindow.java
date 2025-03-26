@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class AddCategoryWindow {
-    public static void open(TextArea categoryTextArea) {
+    public AddCategoryWindow(Stage parentStage){
         Stage addStage = new Stage();
         addStage.initModality(Modality.APPLICATION_MODAL);
         addStage.setTitle("Add New Category");
@@ -24,10 +24,10 @@ public class AddCategoryWindow {
         saveButton.setOnAction(e -> {
             String newCategory = inputField.getText().trim();
             if (!newCategory.isEmpty()) {
-                try {
-                    //under construction
-                }
+                Writing one = new Writing("categories.txt");
+				one.addCategory(newCategory);
             }
+            addStage.close();
         }); 
 
         VBox layout = new VBox(10, new Label("New Category:"), inputField, saveButton);
