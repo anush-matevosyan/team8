@@ -1,3 +1,4 @@
+package team8;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.Assert;
@@ -7,21 +8,23 @@ import org.junit.Test;
 public class WritingDriver{
 	Writing write;
 	Writing goal;
+	Writing category;
 	
     @Before
 	public void setUp() throws Exception {
-        writing = new Writing("spendings.csv");
+        write = new Writing("spendings.csv");
 		goal = new Writing("savingsGoal.txt");
+		category = new Writing("category.txt");
     }
 	
 	@Test
 	public void testAddData(){
-		writing.addData("2025/05/01", "15.00", "Clothes", "bought a jacket");
+		write.addData("2025/05/01", "15.00", "Clothes", "bought a jacket");
 		boolean exists = true;
 		try{
 			File file = new File("spendings.csv");
 			//ArrayList<String> notes = new ArrayList<>();
-			int rows = 0;
+			int row = 0;
 			Scanner reader = new Scanner(file);
 			String header = "Date, Amount, Category, Notes";
 			String read = "2025-05-01,15.00,Clothes,bought a jacket,";
@@ -33,7 +36,7 @@ public class WritingDriver{
 				else{
 					Assert.assertEquals(read, line);
 				}
-				rows++;
+				row++;
 			}
 			reader.close();
 		}
@@ -85,6 +88,30 @@ public class WritingDriver{
 	public void testLoadSavingsGoal(){
 		double get = goal.loadSavingsGoal();
 		Assert.assertEquals(500.0, get);
+	}
+	
+	@Test
+	public void testAddCategory(){
+		category.addCategory("newCategory");
+		boolean exists = true;
+		try{
+			File file = new File("category.txt");
+			int rows = 0;
+			Scanner reader = new Scanner(file);
+			//String header = "Saving goal:";
+			String read = "newCategory";
+			while(reader.hasNextLine()){
+				String line = reader.nextLine();
+				if(line.equals(read)){
+					Assert.assertEquals(read, line);
+				}
+			}
+			reader.close();
+		}
+		catch(FileNotFoundException e){
+			exists = false;
+		}
+		Assert.assertEquals(exists, true);	
 	}
 	
 }
