@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality; 
 
 import javafx.stage.Stage;
-//import test.AlertError;
+import test.AlertError;
 import javafx.geometry.Insets;
 
 public class SetSavingsGoal {
@@ -38,8 +38,7 @@ public class SetSavingsGoal {
             	double goal = Double.parseDouble(txtGoal.getText());
 				double spend = CSVReader.summary("spendings.csv");
 				if(spend > goal){
-					System.out.println("alart");
-					//AlertError error = new AlertError();
+					AlertError error = new AlertError();
 				}
                 savingsStage.close();
             } catch (NumberFormatException ex) {
