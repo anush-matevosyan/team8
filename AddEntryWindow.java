@@ -1,28 +1,17 @@
 package team8;
 
-import javafx.geometry.Pos; 
-
-import javafx.scene.Scene; 
-
-import javafx.scene.control.*; 
-
-import javafx.scene.layout.VBox; 
-
-import javafx.stage.Modality; 
-
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-//import test.AlertError;
-
-import java.io.IOException; 
-
-import java.nio.file.Files; 
-
-import java.nio.file.Paths; 
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List; 
 
-  
+//import test.AlertError;
 
 public class AddEntryWindow { 
 
@@ -97,22 +86,12 @@ public class AddEntryWindow {
             
         }); 
 
-  
+        VBox layout = new VBox(10, new Label("Select Date:"), datePicker, new Label("Select Category:"), categoryComboBox,
+                new Label("Enter Amount:"), amountField, new Label("Additional Notes:"), noteTextArea, addButton);
+        layout.setAlignment(Pos.CENTER);
 
-        VBox layout = new VBox(10, new Label("Select Date:"), datePicker, new Label("Select Category:"), categoryComboBox,  
-
-                new Label("Enter Amount:"), amountField, new Label("Additional Notes:"), noteTextArea, addButton); 
-
-        layout.setAlignment(Pos.CENTER); 
-
-         
-
-        Scene scene = new Scene(layout, 300, 350); 
-
-        addEntryStage.setScene(scene); 
-
-        addEntryStage.showAndWait(); 
-
-    } 
-
+        Scene scene = new Scene(layout, 300, 350);
+        addEntryStage.setScene(scene);
+        addEntryStage.showAndWait();
+    }
 }
