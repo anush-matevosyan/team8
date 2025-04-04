@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class MyCategoriesWindow {
+public class MyCategoriesWindow 
+{
     public MyCategoriesWindow(Stage parentStage) {
         Stage categoryStage = new Stage();
         categoryStage.initModality(Modality.APPLICATION_MODAL);
