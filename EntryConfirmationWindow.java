@@ -1,4 +1,5 @@
-package pROJ1;
+//package pROJ1;
+package team8;
 
 import javafx.geometry.Pos; 
 
@@ -20,7 +21,7 @@ import javafx.scene.text.Text;
 
 public class EntryConfirmationWindow { 
 
-    public EntryConfirmationWindow(String date, String category, String amount, String note, Stage addEntryStage) { 
+    public EntryConfirmationWindow(String[] data, Stage addEntryStage) { 
 
         Stage confirmationStage = new Stage(); 
 
@@ -30,35 +31,35 @@ public class EntryConfirmationWindow {
 
          
 
-        Label dateLabel = new Label("Date: " + date); 
+        Label dateLabel = new Label("Date: " + data[0]); 
 
-        Label categoryLabel = new Label("Category: " + category); 
+        Label categoryLabel = new Label("Category: " + data[2]); 
 
-        Label amountLabel = new Label("Amount: " + amount); 
+        //Label amountLabel = new Label("Amount: " + data[1]); 
 
-        Label noteLabel = new Label("Note: " + note); 
+        Label noteLabel = new Label("Note: " + data[3]); 
 
          
 
         // Amount display customization 
 
-        Text amountText = new Text("Amount: " + amount); 
+        Text amountText = new Text("Amount: " + data[1]); 
 
         try { 
 
-            double amountValue = Double.parseDouble(amount); 
+            double amountValue = Double.parseDouble(data[1]); 
 
-            if ("Income".equalsIgnoreCase(category)) { 
+            if ("Income".equalsIgnoreCase(data[2])) { 
 
                 amountText.setFill(Color.GREEN); 
 
-                amountText.setText("Amount: +$" + amount); 
+                amountText.setText("Amount: +$" + amountValue); 
 
             } else { 
 
                 amountText.setFill(Color.RED); 
 
-                amountText.setText("Amount: -$" + amount); 
+                amountText.setText("Amount: -$" + amountValue); 
 
             } 
 
@@ -75,11 +76,18 @@ public class EntryConfirmationWindow {
         Button confirmButton = new Button("Confirm and Return"); 
 
         confirmButton.setOnAction(e -> {
+        	CSVWriting write = new CSVWriting("spendings.csv");
+            write.writingData(data);
+		    double spend = CSVReader.summary("spendings.csv");
+		    double goal = CSVReader.loadSavingsGoal("savingsGoal.txt");
+            if(spend > goal){
+            	System.out.println("alart");//AlertError error = new AlertError();
+            }
         	confirmationStage.close();
         	addEntryStage.close();
         }); 
 
-         
+        //amountText, 
 
         Button editButton = new Button("Edit Further"); 
 
@@ -87,7 +95,7 @@ public class EntryConfirmationWindow {
 
             confirmationStage.close(); 
 
-            addEntryStage.show(); 
+            //addEntryStage.show(); 
 
         }); 
 

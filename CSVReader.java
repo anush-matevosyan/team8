@@ -1,13 +1,15 @@
+package team8;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
-import java.lang.NumberFormatException;
 
 public class CSVReader{
     public static void read(String fileName){
@@ -18,9 +20,9 @@ public class CSVReader{
            
         try{
             scanner = new Scanner(file);
-            scanner.next();
-            while(scanner.hasNext()){
-                String row = scanner.next();
+            scanner.next();//header
+            while(scanner.hasNextLine()){
+                String row = scanner.nextLine();
                 String[] value = row.split(",|\n");
                 chart.add(Arrays.asList(value));
             }
@@ -30,9 +32,9 @@ public class CSVReader{
         }
 
         try{
-            FileWriter writer = new FileWriter("ExpenseReport.txt");
-            writer.write("Expense Report\n");
-            writer.write("\nDate\tAmount\tCategory\tNotes\n");
+            FileWriter writer = new FileWriter("TransactionHistory.txt");
+            writer.write("Transaction History\n");
+            writer.write("\nDate\t\tAmount\tCategory\tNotes\n");
         
             for(List<String> line : chart) {
                 StringTokenizer tokenizer = new StringTokenizer(line.toString(), "[],");
@@ -75,7 +77,7 @@ public class CSVReader{
 	}
 	
 	public static HashMap<String, Double> getCategoryExpenses(String fileName){
-		double sum =0;
+		//double sum =0;
 		HashMap<String, Double> ans;
 		try{
 			File file = new File(fileName);
@@ -113,5 +115,27 @@ public class CSVReader{
 		}
 		return ans;
 	}
+	
+	public static double loadSavingsGoal(String fileName){
+		double goal =0;
+		try{
+			File file = new File(fileName);
+			Scanner reader = new Scanner(file);
+			reader.nextLine();//get rid of header
+			while(reader.hasNext()){
+				goal = reader.nextDouble();
+				reader.nextLine();
+			}
+			reader.close();
+		}
+		catch(FileNotFoundException e){
+			return -1;
+		}
+		catch(InputMismatchException e){
+			return 0;
+		}
+		return goal;
+	}
+
     
 }

@@ -1,3 +1,5 @@
+package team8;
+
 import javafx.geometry.Pos; 
 
 import javafx.scene.Scene; 
@@ -8,7 +10,9 @@ import javafx.scene.layout.VBox;
 
 import javafx.stage.Modality; 
 
-import javafx.stage.Stage; 
+import javafx.stage.Stage;
+
+//import test.AlertError;
 
 import java.io.IOException; 
 
@@ -44,7 +48,7 @@ public class AddEntryWindow {
 
         try { 
 
-            List<String> categories = Files.readAllLines(Paths.get("C:\\Users\\utsav\\Projects\\pROJ1\\src\\pROJ1\\categories.txt")); 
+            List<String> categories = Files.readAllLines(Paths.get("/home1/ugrads/j8d4n/eclipse-workspace/FinanceManager/qwerty/categories.txt")); 
 
             categoryComboBox.getItems().addAll(categories); 
 
@@ -77,26 +81,20 @@ public class AddEntryWindow {
         // Add Button 
 
         Button addButton = new Button("Add"); 
-
+        
         addButton.setOnAction(e -> { 
-
-            String selectedDate = (datePicker.getValue() != null) ? datePicker.getValue().toString() : "No Date Selected"; 
-
-            String selectedCategory = (categoryComboBox.getValue() != null) ? categoryComboBox.getValue() : "No Category Selected"; 
-
-            String amount = amountField.getText().isEmpty() ? "0" : amountField.getText(); 
-
-            String notes = noteTextArea.getText().isEmpty() ? "No Notes" : noteTextArea.getText(); 
+        	String[] data = new String[4];
             
-            Writing write = new Writing("spendings.csv");
-          
-	    write.addData(selectedDate, amount, selectedCategory, notes);
-	    double spend = CSVReader.summary("spendings.csv");
-	    Writing text = new Writing("savingsGoal.txt");
-	    double goal = text.loadSavingsGoal();
-            if(spend > goal){
-	    	AlertError error = new AlertError();
-	    }
+            data[0] = (datePicker.getValue() != null) ? datePicker.getValue().toString() : "No Date Selected"; 
+
+            data[2] = (categoryComboBox.getValue() != null) ? categoryComboBox.getValue() : "No Category Selected"; 
+
+            data[1] = amountField.getText().isEmpty() ? "0" : amountField.getText(); 
+
+            data[3] = noteTextArea.getText().isEmpty() ? "No Notes" : noteTextArea.getText(); 
+            
+            new EntryConfirmationWindow(data, parentStage);
+            
         }); 
 
   

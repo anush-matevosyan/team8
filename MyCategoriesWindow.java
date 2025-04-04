@@ -1,5 +1,5 @@
-package pROJ1;
-
+//package pROJ1;
+package team8;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

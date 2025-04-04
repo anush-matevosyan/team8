@@ -1,4 +1,5 @@
-package pROJ1;
+//package pROJ1;
+package team8;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -6,10 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 public class AddCategoryWindow {
     public AddCategoryWindow(Stage parentStage){
@@ -24,8 +21,8 @@ public class AddCategoryWindow {
         saveButton.setOnAction(e -> {
             String newCategory = inputField.getText().trim();
             if (!newCategory.isEmpty()) {
-                Writing one = new Writing("categories.txt");
-				one.addCategory(newCategory);
+                String fileName = "categories.txt";
+				TxtWriting.addCategory(fileName, newCategory);
             }
             addStage.close();
         }); 

@@ -1,3 +1,4 @@
+package team8;
 import javafx.geometry.Pos; 
 
 import javafx.scene.Scene; 
@@ -10,16 +11,6 @@ import javafx.stage.Modality;
 
 import javafx.stage.Stage; 
 
-import java.io.IOException; 
-
-import java.nio.file.Files; 
-
-import java.nio.file.Paths; 
-
-import java.util.List; 
-
-  
-
 public class TransactionHistory { 
 
     public TransactionHistory(Stage parentStage) { 
@@ -30,10 +21,10 @@ public class TransactionHistory {
 
         transactionStage.setTitle("Transaction History"); 
 
-	String fileName = "spendings.csv";
-	CSVReader.read(fileName);
-
-	Label history = new Label("Your text file with the transaction history \nhas been created!");
+		String fileName = "spendings.csv";
+		CSVReader.read(fileName);
+	
+		Label history = new Label("Your text file with the transaction history \nhas been created!");
 		
         VBox layout = new VBox(10, history); 
 

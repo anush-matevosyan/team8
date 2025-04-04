@@ -1,5 +1,4 @@
-import javafx.geometry.Pos; 
-
+package team8;
 import javafx.scene.Scene; 
 
 import javafx.scene.control.*; 
@@ -8,18 +7,8 @@ import javafx.scene.layout.VBox;
 
 import javafx.stage.Modality; 
 
-import javafx.stage.Stage; 
-
-import java.io.IOException; 
-
-import java.nio.file.Files; 
-
-import java.nio.file.Paths; 
-
-import java.util.List; 
-
-import javafx.scene.layout.*;
-
+import javafx.stage.Stage;
+//import test.AlertError;
 import javafx.geometry.Insets;
 
 public class SetSavingsGoal {
@@ -34,8 +23,8 @@ public class SetSavingsGoal {
 
         Label lblGoal = new Label("Enter your monthly savings goal:");
         TextField txtGoal = new TextField();
-		Writing write = new Writing("savingsGoal.txt");
-        double existingGoal = write.loadSavingsGoal();
+		TxtWriting write = new TxtWriting("savingsGoal.txt");
+        double existingGoal = CSVReader.loadSavingsGoal("savingsGoal.txt");
         if (existingGoal != -1) {
             txtGoal.setText(String.valueOf(existingGoal));
         }
@@ -43,12 +32,15 @@ public class SetSavingsGoal {
         Button btnSave = new Button("Save Goal");
         btnSave.setOnAction(e -> {
             try {
-                double goal = Double.parseDouble(txtGoal.getText());
-                write.saveSavingsGoal(goal);
-		double spend = CSVReader.summary("spendings.csv");
-		if(spend > goal){
-			AlertError error = new AlertError();
-		}
+            	String[] arr = new String[1];
+            	arr[0] = txtGoal.getText();
+            	write.writingData(arr);
+            	double goal = Double.parseDouble(txtGoal.getText());
+				double spend = CSVReader.summary("spendings.csv");
+				if(spend > goal){
+					System.out.println("alart");
+					//AlertError error = new AlertError();
+				}
                 savingsStage.close();
             } catch (NumberFormatException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid goal amount!");

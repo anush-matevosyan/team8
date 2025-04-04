@@ -1,3 +1,5 @@
+package team8;
+import FinanceManager.AddCategoryWindow;
 import javafx.application.Application; 
 
 import javafx.geometry.Pos; 
@@ -52,8 +54,6 @@ public class MainMenuWindow extends Application {
 
         Button financialReportButton = new Button("Financial Report"); 
 
-        Button myAlertsButton = new Button("My Alerts"); 
-
         Button myCategoriesButton = new Button("My Categories"); 
 
   
@@ -79,12 +79,13 @@ public class MainMenuWindow extends Application {
         addEntryButton.setOnAction(e -> new AddEntryWindow(primaryStage)); 
 
         setGoalButton.setOnAction(e -> new SetSavingsGoal(primaryStage)); 
+        
+        transactionHistoryButton.setOnAction(e -> new TransactionHistory(primaryStage));
 
-		    transactionHistoryButton.setOnAction(e -> new TransactionHistory(primaryStage)); 
+        financialReportButton.setOnAction(e -> new FinancialReport(primaryStage)); 
+
+        myCategoriesButton.setOnAction(e-> new AddCategoryWindow(primaryStage));
 		
-		    financialReportButton.setOnAction(e -> new FinancialReport(primaryStage)); 
-
-
         // Layout with center alignment 
 
         VBox layout = new VBox(10); 
