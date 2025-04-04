@@ -20,7 +20,7 @@ public class CSVReader{
            
         try{
             scanner = new Scanner(file);
-            scanner.next();//header
+            scanner.next();
             while(scanner.hasNextLine()){
                 String row = scanner.nextLine();
                 String[] value = row.split(",|\n");
@@ -58,7 +58,7 @@ public class CSVReader{
 			File file = new File(fileName);
 			ArrayList<String> data = new ArrayList<>();
 			Scanner reader = new Scanner(file);
-			reader.nextLine();//get rid of header
+			reader.nextLine();
 			while(reader.hasNextLine()){
 				data.add(reader.nextLine());
 			}
@@ -77,7 +77,6 @@ public class CSVReader{
 	}
 	
 	public static HashMap<String, Double> getCategoryExpenses(String fileName){
-		//double sum =0;
 		HashMap<String, Double> ans;
 		try{
 			File file = new File(fileName);
@@ -91,7 +90,7 @@ public class CSVReader{
 			ArrayList<Double> amount = new ArrayList<Double>();
 			for(int i=0; i<data.size(); i++){
 				String[] line = data.get(i).split(",");
-				int place = categories.indexOf(line[2]);//contains the category
+				int place = categories.indexOf(line[2]);
 				double replace = Double.parseDouble(line[1]);
 				if(place == -1){
 					categories.add(line[2]);
