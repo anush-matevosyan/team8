@@ -81,7 +81,7 @@ public class EntryConfirmationWindow {
 		    double spend = CSVReader.summary("spendings.csv");
 		    double goal = CSVReader.loadSavingsGoal("savingsGoal.txt");
             if(spend > goal){
-            	System.out.println("alart");//AlertError error = new AlertError();
+            	AlertError error = new AlertError();
             }
         	confirmationStage.close();
         	addEntryStage.close();
