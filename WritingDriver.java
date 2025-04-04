@@ -1,24 +1,30 @@
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 import org.junit.jupiter.api.Test;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class WritingDriver{
-	Writing write;
-	Writing goal;
-	Writing category;
+	CSVWriting write;
+	TxtWriting goal;
+	TxtWriting category;
 	
     @Before
 	public void setUp() throws Exception {
-        write = new Writing("spendings.csv");
-		goal = new Writing("savingsGoal.txt");
-		category = new Writing("category.txt");
+        write = new CSVWriting("spendings.csv");
+		goal = new TxtWriting("savingsGoal.txt");
+		category = new TxtWriting("category.txt");
     }
 	
 	@Test
 	public void testAddData(){
-		write.addData("2025/05/01", "15.00", "Clothes", "bought a jacket");
+		String[] data = {"2025/05/01", "15.00", "Clothes", "bought a jacket"};
+		write.writingData(data);
 		boolean exists = true;
 		try{
 			File file = new File("spendings.csv");
@@ -50,8 +56,9 @@ public class WritingDriver{
 	
 	@Test
 	public void testSaveSavingsGoal(){
-		double amount = 500;
-		goal.saveSavingsGoal(amount);
+		String[] amount = new String[1];
+		amount[0] = "500";
+		goal.writingData(amount);
 		
 		boolean exists = true;
 		try{
@@ -83,11 +90,6 @@ public class WritingDriver{
 		
 	}
 	
-	@Test
-	public void testLoadSavingsGoal(){
-		double get = goal.loadSavingsGoal();
-		Assert.assertEquals(500.0, get);
-	}
 	
 	@Test
 	public void testAddCategory(){
