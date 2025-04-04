@@ -99,7 +99,6 @@ public class WritingDriver{
 			File file = new File("category.txt");
 			int rows = 0;
 			Scanner reader = new Scanner(file);
-			//String header = "Saving goal:";
 			String read = "newCategory";
 			while(reader.hasNextLine()){
 				String line = reader.nextLine();
