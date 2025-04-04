@@ -87,4 +87,28 @@ public class WritingDriver{
 		Assert.assertEquals(500.0, get);
 	}
 	
+	@Test
+	public void testAddCategory(){
+		category.addCategory("newCategory");
+		boolean exists = true;
+		try{
+			File file = new File("category.txt");
+			int rows = 0;
+			Scanner reader = new Scanner(file);
+			//String header = "Saving goal:";
+			String read = "newCategory";
+			while(reader.hasNextLine()){
+				String line = reader.nextLine();
+				if(line.equals(read)){
+					Assert.assertEquals(read, line);
+				}
+			}
+			reader.close();
+		}
+		catch(FileNotFoundException e){
+			exists = false;
+		}
+		Assert.assertEquals(exists, true);	
+	}
+	
 }
