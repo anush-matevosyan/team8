@@ -19,7 +19,8 @@ import javafx.scene.text.Text;
 
   
 
-public class FinancialReport { 
+public class FinancialReport 
+{ 
 
     public FinancialReport(Stage parentStage) { 
 
