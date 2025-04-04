@@ -11,7 +11,8 @@ import javafx.stage.Stage;
 import test.AlertError;
 import javafx.geometry.Insets;
 
-public class SetSavingsGoal {
+public class SetSavingsGoal 
+{
 
     public SetSavingsGoal(Stage parentStage) {
         
