@@ -14,7 +14,6 @@ public class AlertError{
         JLabel label = new JLabel("ALERT!");
         JLabel label2 = new JLabel("Spending has exceeded monthly limit");
 
-
         constraints.gridx = constraints.gridy = 1;
         frame.add(label, constraints);
         constraints.gridy = 2;
