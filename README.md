@@ -10,3 +10,5 @@ This project emphasizes clean design, basic user input validation, and local dat
 
 👨‍💻 Developed by: Utsav Upahdyay, Anush Matevosyn, Hannah Chase & Amarjeet Singh Minhas
 📁 Technologies: Java, JavaFX
+
+Click [here](https://github.com/anush-matevosyan/team8/blob/main/Personal%20Finanacial%20Planner%20Presentation.pdf) to get an extensive overview of the project.
